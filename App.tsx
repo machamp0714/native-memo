@@ -7,9 +7,9 @@ export default function App() {
   return (
     <>
       <Header
-        leftComponent={{ icon: 'menu', color: '#fff' }}
-        centerComponent={{ text: 'Add', style: { color: '#fff' } }}
-        rightComponent={{ icon: 'home', color: '#fff' }}
+        leftComponent={{ icon: 'home', color: '#fff' }}
+        centerComponent={{ text: 'メモアプリ', style: { color: '#fff' } }}
+        rightComponent={{ icon: 'add', type: 'material', color: '#fff' }}
       />
       <TodoList />
     </>
