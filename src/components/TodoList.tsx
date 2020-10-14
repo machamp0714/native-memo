@@ -1,11 +1,13 @@
 import React, { FC } from 'react';
-import { View, Text } from 'react-native';
-import { Card, ListItem, Button, Icon } from 'react-native-elements'
+import { Text } from 'react-native';
+import { Card } from 'react-native-elements'
+import format from 'date-fns/format';
 
 interface ToDo {
   id: number
   title: string
   content: string
+  createdAt: number
 }
 
 const TodoList: FC = () => {
@@ -13,12 +15,14 @@ const TodoList: FC = () => {
     {
       id: 1,
       title: 'bleach',
-      content: '広告数カウント'
+      content: '広告数カウント',
+      createdAt: 1585574700000
     },
     {
       id: 2,
       title: 'nikkol',
-      content: 'コンテンツ移管'
+      content: 'コンテンツ移管',
+      createdAt: 1585567500000
     }
   ];
 
@@ -29,6 +33,7 @@ const TodoList: FC = () => {
           <Card.Title>{todo.title}</Card.Title>
           <Card.Divider />
           <Text>{todo.content}</Text>
+          <Text>作成日時: {format(todo.createdAt, 'yyyy.MM.dd HH:mm')}</Text>
         </Card>
       ))}
     </>
