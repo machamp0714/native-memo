@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Text } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 import { Card } from 'react-native-elements'
 import format from 'date-fns/format';
 
@@ -14,14 +14,14 @@ const TodoList: FC = () => {
   const todos: ToDo[] = [
     {
       id: 1,
-      title: 'bleach',
-      content: '広告数カウント',
+      title: 'メモ１',
+      content: '文章が入ります。文章が入ります。',
       createdAt: 1585574700000
     },
     {
       id: 2,
-      title: 'nikkol',
-      content: 'コンテンツ移管',
+      title: 'メモ２',
+      content: '文章が入ります。文章が入ります。',
       createdAt: 1585567500000
     }
   ];
@@ -33,11 +33,19 @@ const TodoList: FC = () => {
           <Card.Title>{todo.title}</Card.Title>
           <Card.Divider />
           <Text>{todo.content}</Text>
-          <Text>作成日時: {format(todo.createdAt, 'yyyy.MM.dd HH:mm')}</Text>
+          <Text style={styles.createdAt}>作成日時: {format(todo.createdAt, 'yyyy.MM.dd HH:mm')}</Text>
         </Card>
       ))}
     </>
   )
 }
+
+const styles = StyleSheet.create({
+  createdAt: {
+    color: '#999',
+    marginTop: 20,
+    textAlign: 'right'
+  }
+});
 
 export default TodoList;
