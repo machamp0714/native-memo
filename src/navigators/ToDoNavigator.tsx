@@ -19,6 +19,12 @@ const ToDoNavigator = () => (
     <Stack.Screen
       name='Add'
       component={AddTodo}
+      options={{
+        title: 'メモを追加する',
+        headerStyle: { backgroundColor: 'rgb(32, 137, 220)' },
+        headerTitleStyle: { color: '#fff' },
+        headerBackTitleStyle: { color: '#fff' }
+      }}
     />
   </Stack.Navigator>
 );
