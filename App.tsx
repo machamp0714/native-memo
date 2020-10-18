@@ -1,17 +1,11 @@
 import React from 'react';
-import { Header } from 'react-native-elements';
-import { NavigationContainer } from '@react-navigation/native';
-import TodoList from './src/components/TodoList';
+import { NavigationContainer, StackActions } from '@react-navigation/native';
+import ToDoNavigator from './src/navigators/ToDoNavigator';
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Header
-        leftComponent={{ icon: 'home', color: '#fff' }}
-        centerComponent={{ text: 'メモアプリ', style: { color: '#fff' } }}
-        rightComponent={{ icon: 'add', type: 'material', color: '#fff' }}
-      />
-      <TodoList />
-    </NavigationContainer>
-  )
-}
+const App = () => (
+  <NavigationContainer>
+    <ToDoNavigator />
+  </NavigationContainer>
+)
+
+export default App;
