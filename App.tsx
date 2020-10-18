@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import ToDoNavigator from './src/navigators/ToDoNavigator';
 
 const App = () => (

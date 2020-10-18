@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Text } from 'react-native';
-import { Card } from 'react-native-elements'
+import { Card, Header, Icon } from 'react-native-elements'
 import format from 'date-fns/format';
 
 interface ToDo {
@@ -11,6 +12,7 @@ interface ToDo {
 }
 
 const TodoList: FC = () => {
+  const navigation = useNavigation();
   const todos: ToDo[] = [
     {
       id: 1,
@@ -28,6 +30,10 @@ const TodoList: FC = () => {
 
   return (
     <>
+      <Header
+        centerComponent={{ text: 'メモ一覧', style: { color: '#fff', fontWeight: 'bold' } }}
+        rightComponent={<Icon name='add' type='material' color='#fff' onPress={() => navigation.navigate('Add')} />}
+      />
       {todos.map(todo => (
         <Card key={todo.id}>
           <Card.Title>{todo.title}</Card.Title>
@@ -41,6 +47,9 @@ const TodoList: FC = () => {
 }
 
 const styles = StyleSheet.create({
+  addButton: {
+    textAlign: 'right'
+  },
   createdAt: {
     color: '#999',
     marginTop: 20,
