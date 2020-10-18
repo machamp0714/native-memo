@@ -36,7 +36,7 @@ const TodoList: FC = () => {
       />
       {todos.map(todo => (
         <Card key={todo.id}>
-          <Card.Title>{todo.title}</Card.Title>
+          <Card.Title onPress={() => navigation.navigate('ToDo', {todo: todo})}>{todo.title}</Card.Title>
           <Card.Divider />
           <Text>{todo.content}</Text>
           <Text style={styles.createdAt}>作成日時: {format(todo.createdAt, 'yyyy.MM.dd HH:mm')}</Text>

@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import TodoList from '../screens/TodoList'
 import AddTodo from '../screens/AddTodo';
-import { Icon } from 'react-native-elements';
+import Todo from '../screens/Todo';
 
 const Stack = createStackNavigator();
 
@@ -21,6 +21,16 @@ const ToDoNavigator = () => (
       component={AddTodo}
       options={{
         title: 'メモを追加する',
+        headerStyle: { backgroundColor: 'rgb(32, 137, 220)' },
+        headerTitleStyle: { color: '#fff' },
+        headerBackTitleStyle: { color: '#fff' }
+      }}
+    />
+    <Stack.Screen
+      name='ToDo'
+      component={Todo}
+      options={{
+        title: '',
         headerStyle: { backgroundColor: 'rgb(32, 137, 220)' },
         headerTitleStyle: { color: '#fff' },
         headerBackTitleStyle: { color: '#fff' }
