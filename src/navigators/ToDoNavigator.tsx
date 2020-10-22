@@ -3,8 +3,17 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TodoList from '../screens/TodoList'
 import AddTodo from '../screens/AddTodo';
 import Todo from '../screens/Todo';
+import { ToDo } from '../screens/Todo';
 
-const Stack = createStackNavigator();
+export type ToDoStackParamList = {
+  List: undefined
+  ToDo: {
+    todo: ToDo
+  }
+  Add: undefined
+}
+
+const Stack = createStackNavigator<ToDoStackParamList>();
 
 const ToDoNavigator = () => (
   <Stack.Navigator initialRouteName='List'>

@@ -17,7 +17,7 @@ const TodoList: FC = () => {
     {
       id: 1,
       title: 'メモ１',
-      content: '文章が入りまaaaaaaaaaa。',
+      content: '文章が入ります。',
       createdAt: 1585574700000
     },
     {

@@ -2,21 +2,18 @@ import React, { FC } from 'react';
 import { Card } from 'react-native-elements';
 import { StyleSheet, Text } from 'react-native';
 import { RouteProp } from '@react-navigation/native';
+import { ToDoStackParamList } from '../navigators/ToDoNavigator';
 import format from 'date-fns/format';
 
-type TodoStackParamList = {
-  ToDo: {
-    todo: {
-      title: string
-      content: string
-      createdAt: number
-    }
-  }
+export interface ToDo {
+  title: string
+  content: string
+  createdAt: number
 }
 
-type TodoScreenRouteProp = RouteProp<TodoStackParamList, 'ToDo'>
-
-type Props = { route: TodoScreenRouteProp }
+type Props = {
+  route: RouteProp<ToDoStackParamList, 'ToDo'>
+}
 
 const Todo: FC<Props> = ({ route }) => {
   const { title, content, createdAt } = route.params.todo;
