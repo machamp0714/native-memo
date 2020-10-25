@@ -10,8 +10,8 @@ export interface ToDoParams {
   createdAt: number
 }
 
-export const addToDo = (params: ToDoParams) => {
-  const id = 3;
+export const addToDo = (latestToDo: ToDo, params: ToDoParams) => {
+  const id = latestToDo.id ? latestToDo.id + 1 : 1
   const todo: ToDo = { ...params, id: id }
   return {
     type: ADD as typeof ADD,

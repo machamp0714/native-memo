@@ -2,22 +2,25 @@ import React, { FC, useState } from 'react';
 import { StyleSheet, KeyboardAvoidingView } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { ToDoParams } from '../actions/todo';
+import { ToDo } from './TodoList';
 
 interface AddToDoProps {
-  addToDo: (params: ToDoParams) => void
+  todos: ToDo[];
+  addToDo: (latestToDo: ToDo, params: ToDoParams) => void
 }
 
-const AddToDo: FC<AddToDoProps> = ({ addToDo }) => {
+const AddToDo: FC<AddToDoProps> = ({ todos, addToDo }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
   const handleSubmit = () => {
+    const latestToDo = todos[todos.length - 1]
     const params: ToDoParams = {
       title: title,
       content: content,
       createdAt: Date.now()
     }
-    addToDo(params);
+    addToDo(latestToDo, params);
   }
 
   return (

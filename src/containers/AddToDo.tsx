@@ -1,14 +1,24 @@
 import { connect } from 'react-redux';
-import AddToDo from '../screens/AddToDo';
+import AddToDo from '../screens/AddTodo';
 import { Dispatch } from 'redux';
 import { ToDoParams, addToDo } from '../actions/todo';
+import { ToDo } from '../screens/TodoList';
+import { ToDoState } from '../reducers/todo';
 
-interface DispatchProps {
-  addToDo: (params: ToDoParams) => void;
+interface StateProps {
+  todos: ToDo[];
 }
 
-const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
-  addToDo: (params: ToDoParams) => dispatch(addToDo(params))
+interface DispatchProps {
+  addToDo: (latestToDo: ToDo, params: ToDoParams) => void;
+}
+
+const mapStateToProps = (state: ToDoState): StateProps => ({
+  todos: state.todos
 });
 
-export default connect(null, mapDispatchToProps)(AddToDo);
+const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
+  addToDo: (latestToDo, params) => dispatch(addToDo(latestToDo, params))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddToDo);
