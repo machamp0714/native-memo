@@ -4,12 +4,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import { RouteProp } from '@react-navigation/native';
 import { ToDoStackParamList } from '../navigators/ToDoNavigator';
 import format from 'date-fns/format';
-
-export interface ToDo {
-  title: string
-  content: string
-  createdAt: number
-}
+import { ToDo } from './TodoList';
 
 interface Props {
   route: RouteProp<ToDoStackParamList, 'ToDo'>

@@ -4,8 +4,8 @@ import { StyleSheet, Text } from 'react-native';
 import { Card, Header, Icon } from 'react-native-elements'
 import format from 'date-fns/format';
 
-interface ToDo {
-  id: number
+export interface ToDo {
+  id?: number
   title: string
   content: string
   createdAt: number

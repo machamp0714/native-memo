@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import TodoList from '../screens/TodoList'
 import AddTodo from '../screens/AddTodo';
 import Todo from '../screens/Todo';
-import { ToDo } from '../screens/Todo';
+import { ToDo } from '../screens/TodoList';
 
 export type ToDoStackParamList = {
   List: undefined
