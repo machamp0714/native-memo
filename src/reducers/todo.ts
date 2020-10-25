@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { ToDo } from '../screens/ToDoList';
-import { ToDoAction, ADD } from '../actions/todo';
+import { ToDoAction, ADD, UPDATE } from '../actions/todo';
 
 export interface ToDoState {
   todos: ToDo[]
@@ -17,6 +17,13 @@ const ToDoReducer: Reducer<ToDoState, ToDoAction> =
         return {
           ...state,
           todos: [...state.todos, action.payload.todo]
+        }
+      case UPDATE:
+        return {
+          ...state,
+          todos: state.todos.map((todo) => (
+            todo.id === action.payload.id ? { ...action.payload.params, id: todo.id } : todo
+          ))
         }
       default:
         return state

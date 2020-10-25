@@ -4,13 +4,12 @@ import { StyleSheet, View, Text } from 'react-native';
 import { RouteProp } from '@react-navigation/native';
 import { ToDoStackParamList } from '../navigators/ToDoNavigator';
 import format from 'date-fns/format';
-import { ToDo } from './ToDoList';
 
-interface Props {
-  route: RouteProp<ToDoStackParamList, 'ToDo'>
+interface ToDoScreenProps {
+  route: RouteProp<ToDoStackParamList, 'ToDo'>;
 }
 
-const Todo: FC<Props> = ({ route }) => {
+const TodoScreen: FC<ToDoScreenProps> = ({ route }) => {
   const { title, content, createdAt } = route.params.todo;
 
   return (
@@ -45,4 +44,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Todo;
+export default TodoScreen;

@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import ToDoList from '../containers/ToDoList';
 import AddToDo from '../containers/AddToDo';
-import Todo from '../screens/Todo';
+import ToDoScreen from '../containers/ToDo';
 import { ToDo } from '../screens/ToDoList';
 
 export type ToDoStackParamList = {
@@ -37,7 +37,7 @@ const ToDoNavigator = () => (
     />
     <Stack.Screen
       name='ToDo'
-      component={Todo}
+      component={ToDoScreen}
       options={{
         title: '',
         headerStyle: { backgroundColor: 'rgb(32, 137, 220)' },
