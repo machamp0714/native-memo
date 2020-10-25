@@ -8,7 +8,7 @@ export interface ToDo {
   id?: number
   title: string
   content: string
-  createdAt: number
+  createdAt: number | Date
 }
 
 interface ToDoListProps {

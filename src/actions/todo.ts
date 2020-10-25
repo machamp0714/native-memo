@@ -4,14 +4,14 @@ export const ADD = 'ADD';
 export const UPDATE = 'UPDATE';
 export const DELETE = 'DELETE';
 
-export interface ToDoPrams {
+export interface ToDoParams {
   title: string
   content: string,
   createdAt: number
 }
 
-export const addToDo = (params: ToDoPrams) => {
-  const id = 1;
+export const addToDo = (params: ToDoParams) => {
+  const id = 3;
   const todo: ToDo = { ...params, id: id }
   return {
     type: ADD as typeof ADD,
@@ -19,7 +19,7 @@ export const addToDo = (params: ToDoPrams) => {
   }
 }
 
-export const updateToDo = (id: number, params: ToDoPrams) => ({
+export const updateToDo = (id: number, params: ToDoParams) => ({
   type: UPDATE as typeof UPDATE,
   payload: { id, params }
 });

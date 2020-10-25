@@ -1,16 +1,30 @@
 import React, { FC, useState } from 'react';
-import { StyleSheet, View, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView } from 'react-native';
 import { Input, Button } from 'react-native-elements';
+import { ToDoParams } from '../actions/todo';
 
-const AddTodo: FC = () => {
+interface AddToDoProps {
+  addToDo: (params: ToDoParams) => void
+}
+
+const AddToDo: FC<AddToDoProps> = ({ addToDo }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+
+  const handleSubmit = () => {
+    const params: ToDoParams = {
+      title: title,
+      content: content,
+      createdAt: Date.now()
+    }
+    addToDo(params);
+  }
 
   return (
     <KeyboardAvoidingView behavior='padding' style={styles.container}>
       <Input placeholder='タイトルを入力してください' value={title} onChangeText={(text) => setTitle(text)} />
       <Input placeholder='メモを入力してください' value={content} onChangeText={(text) => setContent(text)} />
-      <Button title='追加' style={{ width: 100 }} />
+      <Button title='追加' style={{ width: 100 }} onPress={handleSubmit} />
     </KeyboardAvoidingView>
   )
 }
@@ -23,4 +37,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default AddTodo;
+export default AddToDo;
