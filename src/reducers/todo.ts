@@ -6,7 +6,7 @@ export interface ToDoState {
   todos: ToDo[]
 }
 
-const initState: ToDoState = {
+export const initState: ToDoState = {
   todos: []
 }
 
