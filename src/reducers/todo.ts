@@ -22,7 +22,7 @@ const ToDoReducer: Reducer<ToDoState, ToDoAction> =
         return {
           ...state,
           todos: state.todos.map((todo) => (
-            todo.id === action.payload.id ? { ...action.payload.params, id: todo.id } : todo
+            todo.id === action.payload.id ? { ...action.payload.params, id: todo.id, createdAt: todo.createdAt } : todo
           ))
         }
       default:

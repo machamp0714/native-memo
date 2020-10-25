@@ -1,27 +1,37 @@
-import React, { FC } from 'react';
-import { Card, Button } from 'react-native-elements';
-import { StyleSheet, View, Text } from 'react-native';
+import React, { FC, useState } from 'react';
+import { Button, Input } from 'react-native-elements';
+import { StyleSheet, View, KeyboardAvoidingView } from 'react-native';
 import { RouteProp } from '@react-navigation/native';
 import { ToDoStackParamList } from '../navigators/ToDoNavigator';
-import format from 'date-fns/format';
+import { ToDoParams } from '../actions/todo';
 
 interface ToDoScreenProps {
   route: RouteProp<ToDoStackParamList, 'ToDo'>;
+  updateToDo: (id: number, params: ToDoParams) => void;
 }
 
-const TodoScreen: FC<ToDoScreenProps> = ({ route }) => {
-  const { title, content, createdAt } = route.params.todo;
+const TodoScreen: FC<ToDoScreenProps> = ({ route, updateToDo }) => {
+  const { id, title, content } = route.params.todo;
+
+  const [todoTitle, setToDoTitle] = useState(title);
+  const [todoContent, setToDoContent] = useState(content);
+
+  const handleSubmit = () => {
+    const params = {
+      title: todoTitle,
+      content: todoContent
+    }
+    updateToDo(id, params)
+  }
 
   return (
     <View style={styles.container}>
-      <Card>
-        <Card.Title>{title}</Card.Title>
-        <Card.Divider />
-        <Text>{content}</Text>
-        <Text style={styles.createdAt}>作成日時: {format(createdAt, 'yyyy.MM.dd HH:mm')}</Text>
-      </Card>
+      <KeyboardAvoidingView behavior='padding' style={styles.container}>
+        <Input placeholder='タイトルを入力してください' value={todoTitle} onChangeText={(text) => setToDoTitle(text)} />
+        <Input placeholder='メモを入力してください' value={todoContent} onChangeText={(text) => setToDoContent(text)} />
+      </KeyboardAvoidingView>
       <View style={styles.buttonGroup}>
-        <Button title='更新' />
+        <Button title='更新' onPress={handleSubmit} />
         <Button title='削除' buttonStyle={{ backgroundColor: 'red', marginLeft: 10 }} />
       </View>
     </View>

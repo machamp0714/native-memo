@@ -6,13 +6,12 @@ export const DELETE = 'DELETE';
 
 export interface ToDoParams {
   title: string
-  content: string,
-  createdAt: number
+  content: string
 }
 
 export const addToDo = (latestToDo: ToDo, params: ToDoParams) => {
   const id = latestToDo ? latestToDo.id + 1 : 1
-  const todo: ToDo = { ...params, id: id }
+  const todo: ToDo = { ...params, id: id, createdAt: Date.now() }
   return {
     type: ADD as typeof ADD,
     payload: { todo }
