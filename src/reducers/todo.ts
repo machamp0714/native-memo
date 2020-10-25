@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { ToDo } from '../screens/ToDoList';
-import { ToDoAction, ADD, UPDATE } from '../actions/todo';
+import { ToDoAction, ADD, UPDATE, DELETE } from '../actions/todo';
 
 export interface ToDoState {
   todos: ToDo[]
@@ -23,6 +23,13 @@ const ToDoReducer: Reducer<ToDoState, ToDoAction> =
           ...state,
           todos: state.todos.map((todo) => (
             todo.id === action.payload.id ? { ...action.payload.params, id: todo.id, createdAt: todo.createdAt } : todo
+          ))
+        }
+      case DELETE:
+        return {
+          ...state,
+          todos: state.todos.filter(todo => (
+            todo.id !== action.payload.id
           ))
         }
       default:

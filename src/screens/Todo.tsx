@@ -8,9 +8,10 @@ import { ToDoParams } from '../actions/todo';
 interface ToDoScreenProps {
   route: RouteProp<ToDoStackParamList, 'ToDo'>;
   updateToDo: (id: number, params: ToDoParams) => void;
+  deleteToDo: (id: number) => void;
 }
 
-const TodoScreen: FC<ToDoScreenProps> = ({ route, updateToDo }) => {
+const TodoScreen: FC<ToDoScreenProps> = ({ route, updateToDo, deleteToDo }) => {
   const { id, title, content } = route.params.todo;
 
   const [todoTitle, setToDoTitle] = useState(title);
@@ -32,7 +33,7 @@ const TodoScreen: FC<ToDoScreenProps> = ({ route, updateToDo }) => {
       </KeyboardAvoidingView>
       <View style={styles.buttonGroup}>
         <Button title='更新' onPress={handleSubmit} />
-        <Button title='削除' buttonStyle={{ backgroundColor: 'red', marginLeft: 10 }} />
+        <Button title='削除' onPress={() => deleteToDo(id)} buttonStyle={{ backgroundColor: 'red', marginLeft: 10 }} />
       </View>
     </View>
   )
