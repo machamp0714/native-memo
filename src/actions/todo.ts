@@ -11,7 +11,7 @@ export interface ToDoParams {
 }
 
 export const addToDo = (latestToDo: ToDo, params: ToDoParams) => {
-  const id = latestToDo.id ? latestToDo.id + 1 : 1
+  const id = latestToDo ? latestToDo.id + 1 : 1
   const todo: ToDo = { ...params, id: id }
   return {
     type: ADD as typeof ADD,

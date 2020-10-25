@@ -7,20 +7,7 @@ export interface ToDoState {
 }
 
 export const initState: ToDoState = {
-  todos: [
-    {
-      id: 1,
-      title: 'メモ１',
-      content: '文章が入ります。',
-      createdAt: 1585574700000
-    },
-    {
-      id: 2,
-      title: 'メモ２',
-      content: '文章が入ります。文章が入ります。',
-      createdAt: 1585567500000
-    }
-  ]
+  todos: []
 }
 
 const ToDoReducer: Reducer<ToDoState, ToDoAction> =

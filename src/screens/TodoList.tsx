@@ -5,7 +5,7 @@ import { Card, Header, Icon } from 'react-native-elements'
 import format from 'date-fns/format';
 
 export interface ToDo {
-  id?: number
+  id: number
   title: string
   content: string
   createdAt: number | Date
@@ -24,14 +24,17 @@ const ToDoList: FC<ToDoListProps> = ({ todos }) => {
         centerComponent={{ text: 'メモ一覧', style: { color: '#fff', fontWeight: 'bold' } }}
         rightComponent={<Icon name='add' type='material' color='#fff' onPress={() => navigation.navigate('Add')} />}
       />
-      {todos.map(todo => (
-        <Card key={todo.id}>
-          <Card.Title onPress={() => navigation.navigate('ToDo', {todo: todo})}>{todo.title}</Card.Title>
-          <Card.Divider />
-          <Text>{todo.content}</Text>
-          <Text style={styles.createdAt}>作成日時: {format(todo.createdAt, 'yyyy.MM.dd HH:mm')}</Text>
-        </Card>
-      ))}
+      {todos.length ? 
+        todos.map(todo => (
+          <Card key={todo.id}>
+            <Card.Title onPress={() => navigation.navigate('ToDo', {todo: todo})}>{todo.title}</Card.Title>
+            <Card.Divider />
+            <Text>{todo.content}</Text>
+            <Text style={styles.createdAt}>作成日時: {format(todo.createdAt, 'yyyy.MM.dd HH:mm')}</Text>
+          </Card>
+        )) :
+        <Text>メモがありません</Text>
+      }
     </>
   )
 }
