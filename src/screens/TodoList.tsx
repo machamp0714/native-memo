@@ -11,22 +11,12 @@ export interface ToDo {
   createdAt: number
 }
 
-const TodoList: FC = () => {
+interface ToDoListProps {
+  todos: ToDo[]
+}
+
+const ToDoList: FC<ToDoListProps> = ({ todos }) => {
   const navigation = useNavigation();
-  const todos: ToDo[] = [
-    {
-      id: 1,
-      title: 'メモ１',
-      content: '文章が入ります。',
-      createdAt: 1585574700000
-    },
-    {
-      id: 2,
-      title: 'メモ２',
-      content: '文章が入ります。文章が入ります。',
-      createdAt: 1585567500000
-    }
-  ];
 
   return (
     <>
@@ -57,4 +47,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default TodoList;
+export default ToDoList;

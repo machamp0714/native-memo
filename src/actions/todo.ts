@@ -1,4 +1,4 @@
-import { ToDo } from '../screens/TodoList';
+import { ToDo } from '../screens/ToDoList';
 
 export const ADD = 'ADD';
 export const UPDATE = 'UPDATE';

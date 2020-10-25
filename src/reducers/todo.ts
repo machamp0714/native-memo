@@ -1,5 +1,5 @@
 import { Reducer } from 'redux';
-import { ToDo } from '../screens/TodoList';
+import { ToDo } from '../screens/ToDoList';
 import { ToDoAction, ADD } from '../actions/todo';
 
 export interface ToDoState {
@@ -7,7 +7,20 @@ export interface ToDoState {
 }
 
 export const initState: ToDoState = {
-  todos: []
+  todos: [
+    {
+      id: 1,
+      title: 'メモ１',
+      content: '文章が入ります。',
+      createdAt: 1585574700000
+    },
+    {
+      id: 2,
+      title: 'メモ２',
+      content: '文章が入ります。文章が入ります。',
+      createdAt: 1585567500000
+    }
+  ]
 }
 
 const ToDoReducer: Reducer<ToDoState, ToDoAction> =
