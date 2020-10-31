@@ -29,6 +29,6 @@ export const deleteToDo = (id: number) => ({
 });
 
 export type ToDoAction =
-  | ReturnType<typeof addToDo>
+  | ReturnType<typeof addToDo> // ReturnTypeは、その名の通り関数をの返り値の型をを返す
   | ReturnType<typeof updateToDo>
   | ReturnType<typeof deleteToDo>
