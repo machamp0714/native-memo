@@ -9,7 +9,7 @@ export const addCounter = async(
   const doc = db.collection(collectionName.docCounters).doc(colName);
   await doc.set({
     count: admin.firestore.FieldValue.increment(count),
-    updatedAt: admin.firestore.FieldValue.serverTimestamp()
+    createdAt: admin.firestore.FieldValue.serverTimestamp()
   }),
   { merge: true }
 }

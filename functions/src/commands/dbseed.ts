@@ -26,8 +26,6 @@ const uploadSeed = async (collection: string, seedFile: string) => {
     case collectionName.todos: {
       const docs: Required<ToDo>[] = records.map((record: ToDo) => ({
         ...record,
-        title: record.title ? record.title : null,
-        content: record.content ? record.content : null,
         createdAt: admin.firestore.FieldValue.serverTimestamp()
       })) || [];
 
