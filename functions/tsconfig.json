@@ -1,5 +1,22 @@
 {
   "compilerOptions": {
+    "esModuleInterop": true,
+    "lib": [
+      "dom",
+      "esnext"
+    ],
+    "moduleResolution": "node",
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "rootDir": "src",
+    "types": [
+      "jest",
+      "node"
+    ],
+    "typeRoots": [
+      "node_modules/@types",
+      "../node_modules/@types"
+    ],
     "module": "commonjs",
     "noImplicitReturns": true,
     "noUnusedLocals": true,
@@ -11,5 +28,6 @@
   "compileOnSave": true,
   "include": [
     "src"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }
