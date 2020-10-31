@@ -6,7 +6,11 @@
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "logs": "firebase functions:log",
+    "dbreset": "firebase firestore:delete --all-collections",
+    "dbreset:todos": "firebase firestore:delete --shallow todos",
+    "dbseed": "npm run dbseed:todos",
+    "dbseed:todos": "node lib/commands/dbseed.js todos seeds/todo.csv"
   },
   "engines": {
     "node": "10"
