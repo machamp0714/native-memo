@@ -11,5 +11,5 @@ export const addCounter = async(
     count: admin.firestore.FieldValue.increment(count),
     createdAt: admin.firestore.FieldValue.serverTimestamp()
   }),
-  { merge: true }
+  { merge: true } // data引数で指定された値のみ更新する。SetOptions
 }

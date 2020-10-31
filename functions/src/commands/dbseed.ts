@@ -24,14 +24,14 @@ const uploadSeed = async (collection: string, seedFile: string) => {
 
   switch (collection) {
     case collectionName.todos: {
-      const docs: Required<ToDo>[] = records.map((record: ToDo) => ({
+      const docs: Required<ToDo>[] = records.map((record: ToDo) => ({ // 「idも含めて全てのパラメータが必須」ということをRequiredが伝えている。
         ...record,
-        createdAt: admin.firestore.FieldValue.serverTimestamp()
+        createdAt: admin.firestore.FieldValue.serverTimestamp() // サーバ側のタイムスタンプを入れる
       })) || [];
 
       for await (const doc of docs) {
         const { id, ...docWithoutId } = doc;
-        await ref.doc(id).set(docWithoutId);
+        await ref.doc(id).set(docWithoutId); // idは、string | undefinedなので、undefinedになる可能性があると怒られる
       }
       await addCounter(db, collection, docs.length);
 
