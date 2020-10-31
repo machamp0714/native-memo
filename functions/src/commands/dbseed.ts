@@ -3,10 +3,10 @@ import admin from 'firebase-admin';
 import fs from 'fs';
 import parse from 'csv-parse/lib/sync';
 
-import { ToDo } from '../src/services/models/todo';
-import { collectionName } from '../src/services/constants';
-import { addCounter } from '../src/firestore-admin/record-counter';
-import serviceAccount from '../src/native-memo-61bfc-firebase-adminsdk-3tou1-784622635c.json';
+import { ToDo } from '../services/models/todo';
+import { collectionName } from '../services/constants';
+import { addCounter } from '../firestore-admin/record-counter';
+import serviceAccount from '../native-memo-61bfc-firebase-adminsdk-3tou1-784622635c.json';
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount as admin.ServiceAccount)
@@ -17,9 +17,9 @@ const uploadSeed = async (collection: string, seedFile: string) => {
   const buffer = fs.readFileSync(seedFile);
   const records = parse(buffer.toString(), {
     columns: true,
-    delimiter: '\t',
     skip_empty_lines: true
   });
+  console.log(records);
   const ref = db.collection(collection);
 
   switch (collection) {
@@ -47,7 +47,7 @@ const uploadSeed = async (collection: string, seedFile: string) => {
 
 commander
   .version('0.1.0', '-v, --version')
-  .arguments('<collection><seedFile>')
+  .arguments('<collection> <seedFile>')
   .action(uploadSeed);
 
 commander.parse(process.argv);
