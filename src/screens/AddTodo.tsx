@@ -17,8 +17,7 @@ const AddToDo: FC<AddToDoProps> = ({ todos, addToDo }) => {
     const latestToDo = todos[todos.length - 1]
     const params: ToDoParams = {
       title: title,
-      content: content,
-      createdAt: Date.now()
+      content: content
     }
     addToDo(latestToDo, params);
   }
