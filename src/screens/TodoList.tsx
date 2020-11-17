@@ -17,7 +17,7 @@ interface ToDoListProps {
 
 const ToDoList: FC<ToDoListProps> = ({ todos }) => {
   const navigation = useNavigation();
-
+  console.log(process.env.API_KEY)
   return (
     <>
       <Header
