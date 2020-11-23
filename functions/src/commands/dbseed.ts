@@ -6,7 +6,7 @@ import parse from 'csv-parse/lib/sync';
 import { ToDo } from '../services/models/todo';
 import { collectionName } from '../services/constants';
 import { addCounter } from '../firestore-admin/record-counter';
-import serviceAccount from '../native-memo-61bfc-firebase-adminsdk-3tou1-784622635c.json';
+import serviceAccount from '../todo-react-native.json';
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount as admin.ServiceAccount)
