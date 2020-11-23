@@ -19,14 +19,14 @@ const uploadSeed = async (collection: string, seedFile: string) => {
     columns: true,
     skip_empty_lines: true
   });
-  console.log(records);
   const ref = db.collection(collection);
 
   switch (collection) {
     case collectionName.todos: {
       const docs: Required<ToDo>[] = records.map((record: ToDo) => ({ // 「idも含めて全てのパラメータが必須」ということをRequiredが伝えている。
         ...record,
-        createdAt: admin.firestore.FieldValue.serverTimestamp() // サーバ側のタイムスタンプを入れる
+        createdAt: admin.firestore.FieldValue.serverTimestamp(), // サーバ側のタイムスタンプを入れる
+        updatedAt: admin.firestore.FieldValue.serverTimestamp()
       })) || [];
 
       for await (const doc of docs) {
