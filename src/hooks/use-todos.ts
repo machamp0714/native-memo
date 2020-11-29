@@ -29,13 +29,11 @@ const useToDos = (options?: todosOptions) => {
       setLoading(true);
       try {
         const snap = await query.get();
-        const todosData = snap.docs.map(doc => {
-          console.log(doc.data().id);
-          return {
-            ...(doc.data() as ToDo),
-            id: doc.data().id
-          }
-        });
+        const todosData = snap.docs.map(doc => ({
+          ...(doc.data() as ToDo),
+          id: doc.id
+        }));
+        console.log(todosData);
         setToDos(todosData);
         setError(null);
       } catch (err) {

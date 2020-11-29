@@ -17,6 +17,7 @@ const uploadSeed = async (collection: string, seedFile: string) => {
   const buffer = fs.readFileSync(seedFile);
   const records = parse(buffer.toString(), {
     columns: true,
+    delimiter: '\t',
     skip_empty_lines: true
   });
   const ref = db.collection(collection);
