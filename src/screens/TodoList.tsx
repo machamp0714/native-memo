@@ -13,7 +13,7 @@ interface ToDoListProps {
 
 const ToDoList: FC<ToDoListProps> = ({ todos, loading }) => {
   const navigation = useNavigation();
-
+  
   return (
     <>
       <Header
