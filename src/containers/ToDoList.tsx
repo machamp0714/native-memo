@@ -1,9 +1,11 @@
-import { connect } from 'react-redux';
-import ToDoList from '../screens/ToDoList';
-import { ToDoState } from '../reducers/todo';
+import React, { FC } from 'react';
+import ToDoList from '../screens/TodoList';
+import useToDos from '../hooks/use-todos';
 
-const mapStateToProps = (state: ToDoState) => ({
-  todos: state.todos
-});
+const ToDoListContainer: FC = () => {
+  const { todos, loading } = useToDos();
 
-export default connect(mapStateToProps, null)(ToDoList);
+  return <ToDoList todos={todos} loading={loading} />
+}
+
+export default ToDoListContainer;

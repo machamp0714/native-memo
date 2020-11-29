@@ -4,20 +4,16 @@ import { StyleSheet, Text } from 'react-native';
 import { Card, Header, Icon } from 'react-native-elements'
 import format from 'date-fns/format';
 
-export interface ToDo {
-  id: number
-  title: string
-  content: string
-  createdAt: number | Date
-}
+import { ToDo } from '../services/models/todo';
 
 interface ToDoListProps {
-  todos: ToDo[]
+  todos: ToDo[],
+  loading: boolean
 }
 
-const ToDoList: FC<ToDoListProps> = ({ todos }) => {
+const ToDoList: FC<ToDoListProps> = ({ todos, loading }) => {
   const navigation = useNavigation();
-  console.log(process.env.API_KEY)
+
   return (
     <>
       <Header
@@ -30,7 +26,6 @@ const ToDoList: FC<ToDoListProps> = ({ todos }) => {
             <Card.Title onPress={() => navigation.navigate('ToDo', {todo: todo})}>{todo.title}</Card.Title>
             <Card.Divider />
             <Text>{todo.content}</Text>
-            <Text style={styles.createdAt}>作成日時: {format(todo.createdAt, 'yyyy.MM.dd HH:mm')}</Text>
           </Card>
         )) :
         <Text>メモがありません</Text>

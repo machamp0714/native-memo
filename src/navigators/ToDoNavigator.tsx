@@ -1,9 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import ToDoList from '../containers/ToDoList';
+import ToDoListContainer from '../containers/ToDoList';
 import AddToDo from '../containers/AddToDo';
 import ToDoScreen from '../containers/ToDo';
-import { ToDo } from '../screens/ToDoList';
+import { ToDo } from '../services/models/todo';
 
 export type ToDoStackParamList = {
   List: undefined
@@ -19,7 +19,7 @@ const ToDoNavigator = () => (
   <Stack.Navigator initialRouteName='List'>
     <Stack.Screen
       name='List'
-      component={ToDoList}
+      component={ToDoListContainer}
       options={{
         title: 'メモ一覧',
         headerShown: false
