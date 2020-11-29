@@ -33,7 +33,6 @@ const useToDos = (options?: todosOptions) => {
           ...(doc.data() as ToDo),
           id: doc.id
         }));
-        console.log(todosData);
         setToDos(todosData);
         setError(null);
       } catch (err) {

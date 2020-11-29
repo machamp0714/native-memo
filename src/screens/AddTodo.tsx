@@ -1,25 +1,32 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useContext } from 'react';
 import { StyleSheet, KeyboardAvoidingView } from 'react-native';
 import { Input, Button } from 'react-native-elements';
+import firebase from 'firebase/app';
+
+import { FirebaseContext } from '../contexts';
 import { ToDoParams } from '../actions/todo';
-import { ToDo } from './TodoList';
+import { collectionName } from '../services/constants';
 
-interface AddToDoProps {
-  todos: ToDo[];
-  addToDo: (latestToDo: ToDo, params: ToDoParams) => void
-}
-
-const AddToDo: FC<AddToDoProps> = ({ todos, addToDo }) => {
+const AddToDo: FC = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const { db } = useContext(FirebaseContext);
+  if (!db) throw new Error('unauthorized');
+
+  const addToDo = (params: ToDoParams) => {
+    db.collection(collectionName.todos).add({
+      ...params,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }
 
   const handleSubmit = () => {
-    const latestToDo = todos[todos.length - 1]
     const params: ToDoParams = {
       title: title,
       content: content
     }
-    addToDo(latestToDo, params);
+    addToDo(params);
   }
 
   return (

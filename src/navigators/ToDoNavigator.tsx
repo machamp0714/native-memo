@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import ToDoListContainer from '../containers/ToDoList';
-import AddToDo from '../containers/AddToDo';
+import AddToDo from '../screens/AddTodo';
 import ToDoScreen from '../containers/ToDo';
 import { ToDo } from '../services/models/todo';
 
