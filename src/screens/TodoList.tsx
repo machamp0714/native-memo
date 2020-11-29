@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, Text } from 'react-native';
 import { Card, Header, Icon } from 'react-native-elements'
-import format from 'date-fns/format';
+import { format } from 'date-fns';
 
 import { ToDo } from '../services/models/todo';
 
@@ -20,12 +20,13 @@ const ToDoList: FC<ToDoListProps> = ({ todos, loading }) => {
         centerComponent={{ text: 'メモ一覧', style: { color: '#fff', fontWeight: 'bold' } }}
         rightComponent={<Icon name='add' type='material' color='#fff' onPress={() => navigation.navigate('Add')} />}
       />
-      {todos.length ? 
+      {todos ?
         todos.map(todo => (
           <Card key={todo.id}>
             <Card.Title onPress={() => navigation.navigate('ToDo', {todo: todo})}>{todo.title}</Card.Title>
             <Card.Divider />
             <Text>{todo.content}</Text>
+            <Text style={styles.createdAt}>{format(todo.createdAt!.toDate(), 'yyyy年M月d日')}</Text>
           </Card>
         )) :
         <Text>メモがありません</Text>
